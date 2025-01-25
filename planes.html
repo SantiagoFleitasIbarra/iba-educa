@@ -131,24 +131,25 @@
     }
 
     .payment-notice {
-      position: absolute;
+      align-content: center;
+      margin-bottom: 2rem;
+      position: relative;
       bottom: 20px;
-      left: 50%;
+      left: 23%;
       transform: translateX(-50%);
       background: var(--!card-bg);
       padding: 10px 20px;
-      border-radius: 10px;
+      border-radius: 20px;
       font-size: 0.9rem;
       color: var(--text-color);
-      width: max-content;
       max-width: 90%;
       text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 10px rgba(99, 102, 241, 0.15);
     }
 
     .recommended-badge {
       position: absolute;
-      top: -15px;
+      top: -10px;
       right: -15px;
       background: linear-gradient(45deg, #ff6b6b, #feca57);
       color: white;
@@ -156,7 +157,7 @@
       border-radius: 20px;
       font-weight: bold;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      transform: rotate(15deg);
+      transform: rotate(9deg);
       z-index: 1;
     }
 
@@ -215,11 +216,17 @@
 <body>
   <header>
     <nav class="container">
-      <a href="index.html" class="logo">Iba Educa</a>
+      <a href="index.html" class="logo">IbaEduca</a>
     </nav>
   </header>
 
   <section class="plans-section">
+
+    <div class="payment-notice">
+      <i class="fas fa-info-circle"></i>
+      No es necesario tener una cuenta de PayPal. Se aceptan todas las tarjetas de débito y crédito.
+    </div>
+
     <div class="plans-container">
       <div class="plan-card">
         <h2 class="plan-title">Plan Alumno Avanzado</h2>
@@ -235,13 +242,9 @@
           <li><i class="fas fa-check"></i> Material didáctico exclusivo</li>
         </ul>
         <div class="payment-buttons">
-          <button class="payment-btn mercadopago-btn">
-            <i class="fas fa-shopping-cart"></i>
-            Pagar con Mercado Pago
-          </button>
           <button class="payment-btn paypal-btn">
             <i class="fab fa-paypal"></i>
-            Pagar con PayPal
+            Pagar con PayPal, Débito o Crédito
           </button>
         </div>
       </div>
@@ -264,21 +267,12 @@
           <li><i class="fas fa-check"></i> 2 clases presenciales semanales</li>
         </ul>
         <div class="payment-buttons">
-          <button class="payment-btn mercadopago-btn">
-            <i class="fas fa-shopping-cart"></i>
-            Pagar con Mercado Pago
-          </button>
           <button class="payment-btn paypal-btn">
             <i class="fab fa-paypal"></i>
-            Pagar con PayPal
+            Pagar con PayPal, Débito o Crédito
           </button>
         </div>
       </div>
-    </div>
-
-    <div class="payment-notice">
-      <i class="fas fa-info-circle"></i>
-      No es necesario tener una cuenta de Mercado Pago o PayPal. Se aceptan todas las tarjetas de débito y crédito.
     </div>
 
     <script>
