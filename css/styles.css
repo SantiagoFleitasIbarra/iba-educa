@@ -1424,7 +1424,7 @@ textarea {
 /* VendiBooks section */
 .vendibooks-section {
   padding: 80px 0;
-  background: linear-gradient(135deg, #f6f8ff 0%, #f0f3ff 100%);
+  background: white;
   overflow: hidden;
   position: relative;
 }
@@ -1443,7 +1443,7 @@ textarea {
 .vendibooks-text h2 {
   font-size: 2.5rem;
   margin-bottom: 10px;
-  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  background: rgb(218, 120, 28);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -1451,7 +1451,7 @@ textarea {
 .vendibooks-text h3 {
   font-size: 1.8rem;
   margin-bottom: 20px;
-  color: var(--text-color);
+  color: rgb(192, 104, 21);
 }
 
 .vendibooks-text p {
@@ -1478,7 +1478,7 @@ textarea {
 
 .vendibooks-features .feature i {
   font-size: 2rem;
-  color: var(--primary-color);
+  color: rgb(218, 120, 28);
 }
 
 .vendibooks-features .feature span {
@@ -1490,8 +1490,8 @@ textarea {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-  color: white;
+  background: linear-gradient(45deg, rgb(218, 120, 28));
+  color: rgb(128, 64, 12);
   padding: 15px 30px;
   border-radius: 30px;
   text-decoration: none;
@@ -1502,7 +1502,7 @@ textarea {
 
 .vendibooks-cta:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
+  box-shadow: 0 10px 20px rgb(218, 120, 28);
 }
 
 .vendibooks-media {
@@ -1518,48 +1518,13 @@ textarea {
   transform-style: preserve-3d;
 }
 
-.book {
+.book-icon img {
+  margin-top: 3rem;
   position: absolute;
-  width: 200px;
-  height: 300px;
+  width: 120px;
+  height: 120px;
   transform-style: preserve-3d;
   animation: floatBook 6s ease-in-out infinite;
-}
-
-.book:nth-child(1) {
-  top: 10%;
-  left: 10%;
-  animation-delay: 0s;
-}
-
-.book:nth-child(2) {
-  top: 20%;
-  left: 40%;
-  animation-delay: -2s;
-}
-
-.book:nth-child(3) {
-  top: 30%;
-  left: 70%;
-  animation-delay: -4s;
-}
-
-.book-cover {
-  position: absolute;
-  width: 200px;
-  height: 300px;
-  background: linear-gradient(45deg, #6366f1, #818cf8);
-  border-radius: 2px;
-  transform: rotateY(0deg) translateZ(10px);
-  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
-}
-
-.book-spine {
-  position: absolute;
-  width: 20px;
-  height: 300px;
-  background: linear-gradient(45deg, #4f46e5, #6366f1);
-  transform: rotateY(90deg) translateZ(100px);
 }
 
 @keyframes floatBook {
