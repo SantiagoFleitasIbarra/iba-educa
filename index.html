@@ -1,0 +1,836 @@
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduFuture Academy - Clases Online de Matemática, Física, Programación y Administración</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f7f7f7;
+      color: #333;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    header {
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      text-decoration: none;
+    }
+    .nav-links a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #333;
+    }
+    .hero {
+      background-color: #f0f0f0;
+      padding: 100px 0 50px;
+      text-align: center;
+    }
+    .wave-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #f0f0f0;
+      z-index: -1;
+    }
+    .wave {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background-image: url('https://cdn.dribbble.com/users/1412464/screenshots/15663790/media/3d19e6f2eb3b8d7c1a97e16e5b6c70f3.png');
+      background-position: 0% 100%;
+      background-size: 1000px 100px;
+      animation: wave 10s linear infinite;
+    }
+    @keyframes wave {
+      0% {
+        background-position: 0% 100%;
+      }
+      100% {
+        background-position: 100% 100%;
+      }
+    }
+    h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+    .subtitle {
+      font-size: 24px;
+      color: #666;
+      margin-bottom: 40px;
+    }
+    .cta-button {
+      background-color: #007bff;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    .cta-button:hover {
+      background-color: #0056b3;
+    }
+    .hero-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .hero-text {
+      width: 50%;
+    }
+    .hero-animation {
+      width: 50%;
+    }
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .professors {
+      padding: 80px 0;
+    }
+    .professors-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
+    .professor-card {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .professor-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
+      margin: 0 auto;
+    }
+    .features {
+      padding: 80px 0;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+    .feature-card {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .feature-card h3 {
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+    .feature-card p {
+      color: #666;
+    }
+    .contact-section {
+      padding: 80px 0;
+      text-align: center;
+    }
+    .social-links {
+      margin-top: 20px;
+    }
+    .social-links a {
+      margin: 0 10px;
+      font-size: 24px;
+      color: #333;
+    }
+    .social-links a:hover {
+      color: #007bff;
+    }
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 40px 0;
+      text-align: center;
+    }
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      display: none;
+    }
+    .modal-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      width: 50%;
+      margin: 40px auto;
+    }
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .close-reservation {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .auth-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .auth-form {
+      display: block;
+    }
+    .hidden {
+      display: none;
+    }
+    .success-message {
+      display: none;
+      color: #2ecc71;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .aurora-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #f0f0f0;
+      z-index: -1;
+    }
+    .aurora {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background-image: url('https://cdn.dribbble.com/users/1412464/screenshots/15663790/media/3d19e6f2eb3b8d7c1a97e16e5b6c70f3.png');
+      background-position: 0% 100%;
+      background-size: 1000px 100px;
+      animation: wave 10s linear infinite;
+    }
+    .terms-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      display: none;
+    }
+    .terms-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      width: 50%;
+      margin: 40px auto;
+    }
+    .close-terms {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .terms-button {
+      margin: 20px;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .menu-toggle {
+      display: none;
+    }
+    @media only screen and (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #fff;
+        padding: 20px;
+        border: 1px solid #ddd;
+      }
+      .nav-links a {
+        display: block;
+        margin-bottom: 10px;
+      }
+    }
+    .float-menu-trigger {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+    .float-menu {
+      position: fixed;
+      bottom: 60px;
+      right: 20px;
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      border-radius: 10px;
+      display: none;
+      z-index: 1000;
+    }
+    .float-menu button {
+      margin: 10px 0;
+      padding: 10px;
+      background-color: transparent;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      text-align: left;
+    }
+    .float-menu button span {
+      margin-left: 10px;
+    }
+    .profile-image-container {
+      text-align: center;
+    }
+    .input-group {
+      margin-bottom: 20px;
+    }
+    .input-group label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    .vendibooks-section {
+      padding: 80px 0;
+      text-align: center;
+    }
+    .vendibooks-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .vendibooks-text {
+      width: 50%;
+    }
+    .vendibooks-media {
+      width: 50%;
+    }
+    .vendibooks-features {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    .feature {
+      margin: 0 10px;
+    }
+    .book-showcase {
+      display: flex;
+      justify-content: space-between;
+    }
+    .book {
+      width: 100px;
+      height: 150px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      display: inline-block;
+      margin: 0 10px;
+    }
+    .book-cover {
+      width: 100%;
+      height: 100px;
+      background-color: #f0f0f0;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+    .book-spine {
+      width: 10px;
+      height: 50px;
+      background-color: #333;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="aurora-background">
+    <div class="aurora"></div>
+  </div>
+  <header>
+    <nav class="container">
+      <a href="#hero" class="logo">EduFuture Academy</a>
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="nav-links">
+        <a href="#profesores">Profesores</a>
+        <a href="#cursos">Cursos</a>
+        <a href="#contacto">Contacto</a>
+        <button id="loginBtn" class="login-btn">Iniciar Sesión</button>
+        <div id="userProfileBtn" class="user-profile" style="display: none;">
+          <img id="userProfileImage" src="https://via.placeholder.com/40" alt="Profile">
+          <span id="userProfileName"></span>
+          <div class="profile-dropdown">
+            <button onclick="document.getElementById('profileModal').style.display='block'">
+              <i class="fas fa-user-edit"></i> Editar Perfil
+            </button>
+            <button id="logoutBtn">
+              <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="hero">
+      <div class="wave-background">
+        <div class="wave"></div>
+      </div>
+      <div class="container hero-content">
+        <div class="hero-text">
+          <h1>Aprende del Futuro, Hoy</h1>
+          <p class="subtitle">"El conocimiento es poder. La educación es la llave hacia el futuro que imaginas."</p>
+          <a href="#" id="startJourneyBtn" class="cta-button" data-requires-auth="true" data-href="/clases-grabadas.html">Comienza tu viaje</a>
+        </div>
+        <div class="hero-animation">
+          <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&auto=format&fit=crop" alt="Education" class="hero-image">
+        </div>
+      </div>
+    </section>
+
+    <section class="professors" id="profesores">
+      <div class="container">
+        <h2>Nuestros Profesores</h2>
+        <div class="professors-grid">
+          <div class="professor-card">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Santiago Fleitas" />
+            <h3>Santiago Fleitas</h3>
+            <p>Experto en Matemática y Programación</p>
+            <p class="professor-desc">Apasionado por hacer que los números y el código cobren vida, Santiago tiene años de experiencia transformando conceptos complejos en aprendizajes accesibles.</p>
+          </div>
+          <div class="professor-card">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Fleitas" />
+            <h3>Fleitas</h3>
+            <p>Especialista en Física y Administración</p>
+            <p class="professor-desc">Combina su expertise en física con conocimientos sólidos en administración de empresas para ofrecer una perspectiva única en la enseñanza.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" id="cursos">
+      <div class="container">
+        <div class="features-grid">
+          <div class="feature-card" data-requires-auth="true" data-href="/clases-grabadas.html">
+            <i class="fas fa-video"></i>
+            <h3>Clases Grabadas</h3>
+            <p>Accede a nuestra biblioteca completa de clases grabadas</p>
+          </div>
+          <div class="feature-card" data-requires-auth="true" data-href="/material-didactico.html">
+            <i class="fas fa-book"></i>
+            <h3>Material Didáctico</h3>
+            <p>Descarga recursos y materiales de estudio exclusivos</p>
+          </div>
+          <div class="feature-card" data-reservation="true">
+            <i class="fas fa-calendar-check"></i>
+            <h3>Reserva tu Clase Gratuita</h3>
+            <p>Programa una clase de prueba con nuestros profesores</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nueva sección de VendiBooks -->
+    <section class="vendibooks-section">
+      <div class="container">
+        <div class="vendibooks-content">
+          <div class="vendibooks-text">
+            <h2>Descubre VendiBooks</h2>
+            <h3>Tu librería online de confianza</h3>
+            <p>Encuentra una amplia selección de libros educativos, novelas, y mucho más. ¡Los mejores títulos al mejor precio!</p>
+            <div class="vendibooks-features">
+              <div class="feature">
+                <i class="fas fa-truck"></i>
+                <span>Envío a todo el país</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-book"></i>
+                <span>Miles de títulos disponibles</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-percent"></i>
+                <span>Ofertas especiales</span>
+              </div>
+            </div>
+            <a href="https://vendibooks.tiendup.com/" target="_blank" class="vendibooks-cta">
+              <i class="fas fa-shopping-cart"></i>
+              Visitar VendiBooks
+            </a>
+          </div>
+          <div class="vendibooks-media">
+            <div class="book-showcase">
+              <div class="book">
+                <div class="book-cover"></div>
+                <div class="book-spine"></div>
+              </div>
+              <div class="book">
+                <div class="book-cover"></div>
+                <div class="book-spine"></div>
+              </div>
+              <div class="book">
+                <div class="book-cover"></div>
+                <div class="book-spine"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contacto">
+      <div class="container">
+        <h2>Contacto</h2>
+        <p>Síguenos en nuestras redes sociales y mantente actualizado</p>
+        <div class="social-links">
+          <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal de Login -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="auth-container">
+        <div id="loginForm" class="auth-form">
+          <h2>Iniciar Sesión</h2>
+          <form>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Contraseña" required>
+            <button type="submit">Iniciar Sesión</button>
+          </form>
+          <p>¿No tienes cuenta? <a href="#" id="showRegister">Regístrate</a></p>
+        </div>
+        <div id="registerForm" class="auth-form hidden">
+          <h2>Registro</h2>
+          <form>
+            <input type="text" placeholder="Nombre completo" required>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Contraseña" required>
+            <input type="password" placeholder="Confirmar contraseña" required>
+            <button type="submit">Registrarse</button>
+          </form>
+          <p>¿Ya tienes cuenta? <a href="#" id="showLogin">Inicia sesión</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reservation Modal -->
+  <div id="reservationModal" class="modal">
+    <div class="modal-content">
+      <span class="close-reservation">&times;</span>
+      <h2>Reserva tu Clase Gratuita</h2>
+      <form id="reservationForm" class="reservation-form">
+        <input type="text" placeholder="Nombre completo" required>
+        <input type="email" placeholder="Email" required>
+        
+        <select id="subject" required>
+          <option value="">Selecciona una asignatura</option>
+          <option value="matematica">Matemática</option>
+          <option value="fisica">Física</option>
+          <option value="programacion">Programación</option>
+          <option value="administracion">Administración de Empresas</option>
+        </select>
+        
+        <select id="topic" required>
+          <option value="">Selecciona un tema</option>
+        </select>
+
+        <div class="datetime-picker">
+          <input type="date" required min="">
+          <input type="time" required>
+        </div>
+
+        <textarea placeholder="Mensaje (opcional)" rows="4"></textarea>
+        
+        <button type="submit">Reservar Clase</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="termsModal" class="terms-modal">
+    <div class="terms-content">
+      <span class="close-terms">&times;</span>
+      <h2>Términos y Condiciones</h2>
+      
+      <h3>1. Responsabilidad de Menores</h3>
+      <p>Para estudiantes menores de 18 años, se requiere la autorización y supervisión de un padre o tutor legal. Los padres/tutores asumen la responsabilidad de supervisar las actividades en línea del menor.</p>
+
+      <h3>2. Política de Pagos y Reembolsos</h3>
+      <p>Todas las transacciones se procesan de manera segura. Los reembolsos están disponibles dentro de los primeros 7 días de la compra si no se ha accedido al contenido.</p>
+
+      <h3>3. Privacidad y Seguridad</h3>
+      <p>Protegemos la información personal de acuerdo con las leyes de protección de datos. No compartimos información con terceros sin consentimiento previo.</p>
+
+      <h3>4. Conducta del Estudiante</h3>
+      <p>Los estudiantes deben mantener un comportamiento respetuoso durante las clases. Cualquier forma de acoso o comportamiento inadecuado resultará en la terminación del servicio.</p>
+
+      <h3>5. Uso del Contenido</h3>
+      <p>Todo el material proporcionado es para uso personal y educativo. No está permitida la redistribución o comercialización del contenido.</p>
+
+      <h3>6. Clases y Cancelaciones</h3>
+      <p>Las cancelaciones deben realizarse con al menos 24 horas de anticipación. Las clases perdidas sin aviso previo no serán reembolsadas.</p>
+
+      <h3>7. Responsabilidad del Servicio</h3>
+      <p>Nos esforzamos por mantener un servicio de alta calidad, pero no nos hacemos responsables por interrupciones técnicas fuera de nuestro control.</p>
+    </div>
+  </div>
+
+  <div id="profileModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="this.parentElement.parentElement.style.display='none'">&times;</span>
+      <h2>Editar Perfil</h2>
+      <form id="profileForm" class="profile-form">
+        <div class="profile-image-container">
+          <img id="profilePreview" src="https://via.placeholder.com/120" alt="Profile Preview">
+          <label for="profileImageInput">
+            <i class="fas fa-camera"></i> Cambiar foto
+          </label>
+          <input id="profileImageInput" type="file" name="profileImage" accept="image/*" onchange="previewImage(this)">
+        </div>
+        
+        <div class="input-group">
+          <label>Fecha de nacimiento</label>
+          <input type="date" name="birthDate">
+        </div>
+        
+        <button type="submit">
+          <i class="fas fa-save"></i> Guardar Cambios
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <button class="float-menu-trigger">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <div class="float-menu">
+    <button id="themeToggleBtn">
+      <i class="fas fa-moon"></i>
+      <span>Cambiar tema</span>
+    </button>
+    <button id="termsBtn">
+      <i class="fas fa-info-circle"></i>
+      <span>Términos y condiciones</span>
+    </button>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2023 EduFuture Academy. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Animación suave para el scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Efecto de parallax simple para el hero
+    window.addEventListener('scroll', function() {
+      const scrollPosition = window.pageYOffset;
+      document.querySelector('.hero').style.backgroundPositionY = scrollPosition * 0.5 + 'px';
+    });
+
+    // Animación de entrada para los elementos de características
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.feature-card').forEach(item => {
+      item.style.opacity = 0;
+      item.style.transform = 'translateY(20px)';
+      item.style.transition = 'opacity 0.5s, transform 0.5s';
+      observer.observe(item);
+    });
+
+    // Modal de login
+    const loginModal = document.getElementById('loginModal');
+    const loginBtn = document.getElementById('loginBtn');
+    const closeBtn = document.querySelector('.close');
+
+    loginBtn.addEventListener('click', () => {
+      loginModal.style.display = 'block';
+    });
+
+    closeBtn.addEventListener('click', () => {
+      loginModal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === loginModal) {
+        loginModal.style.display = 'none';
+      }
+    });
+
+    // Registro
+    const showRegister = document.getElementById('showRegister');
+    const showLogin = document.getElementById('showLogin');
+    const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
+
+    showRegister.addEventListener('click', () => {
+      loginForm.classList.add('hidden');
+      registerForm.classList.remove('hidden');
+    });
+
+    showLogin.addEventListener('click', () => {
+      registerForm.classList.add('hidden');
+      loginForm.classList.remove('hidden');
+    });
+
+    // Reservation Modal
+    const reservationModal = document.getElementById('reservationModal');
+    const featureCard = document.querySelector('.feature-card[data-reservation="true"]');
+    const closeReservationBtn = document.querySelector('.close-reservation');
+
+    featureCard.addEventListener('click', () => {
+      reservationModal.style.display = 'block';
+    });
+
+    closeReservationBtn.addEventListener('click', () => {
+      reservationModal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === reservationModal) {
+        reservationModal.style.display = 'none';
+      }
+    });
+
+    // Reservation form
+    const reservationForm = document.getElementById('reservationForm');
+
+    reservationForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      // Send reservation data to server
+      // For demonstration purposes, we'll just show a success message
+      alert("¡Reserva exitosa! Nos pondremos en contacto contigo pronto.");
+      reservationModal.style.display = 'none';
+    });
+
+    const termsModal = document.getElementById('termsModal');
+    const termsBtn = document.getElementById('termsBtn');
+    const closeTermsBtn = document.querySelector('.close-terms');
+
+    termsBtn.addEventListener('click', () => {
+      termsModal.style.display = 'block';
+    });
+
+    closeTermsBtn.addEventListener('click', () => {
+      termsModal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === termsModal) {
+        termsModal.style.display = 'none';
+      }
+    });
+
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.style.display = navLinks.style.display === 'block' ? 'none' : 'block';
+    });
+
+    const floatMenuTrigger = document.querySelector('.float-menu-trigger');
+    const floatMenu = document.querySelector('.float-menu');
+
+    floatMenuTrigger.addEventListener('click', () => {
+      floatMenu.style.display = floatMenu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const html = document.querySelector('html');
+
+    themeToggleBtn.addEventListener('click', () => {
+      if (html.getAttribute('data-theme') === 'light') {
+        html.setAttribute('data-theme', 'dark');
+      } else {
+        html.setAttribute('data-theme', 'light');
+      }
+    });
+
+    function previewImage(input) {
+      const profilePreview = document.getElementById('profilePreview');
+      profilePreview.src = URL.createObjectURL(input.files[0]);
+    }
+  </script>
+</body>
+</html>

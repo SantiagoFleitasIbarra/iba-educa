@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planes de Estudio - EduFuture Academy</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .plans-section {
+      padding: 100px 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--background);
+      position: relative;
+    }
+
+    .plans-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .plan-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      transition: transform 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .plan-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .plan-title {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--text-color);
+    }
+
+    .plan-price {
+      font-size: 3rem;
+      font-weight: bold;
+      margin: 20px 0;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .plan-features {
+      list-style: none;
+      padding: 0;
+      margin: 30px 0;
+    }
+
+    .plan-features li {
+      padding: 10px 0;
+      color: var(--text-color);
+    }
+
+    .plan-features li i {
+      color: var(--primary-color);
+      margin-right: 10px;
+    }
+
+    .payment-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .payment-btn {
+      padding: 12px 24px;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .payment-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .mercadopago-btn {
+      background: #009ee3;
+      color: white;
+    }
+
+    .paypal-btn {
+      background: #003087;
+      color: white;
+    }
+
+    .currency-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .currency-toggle button {
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: 2px solid var(--primary-color);
+      background: transparent;
+      color: var(--text-color);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .currency-toggle button.active {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    .payment-notice {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--!card-bg);
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      color: var(--text-color);
+      width: max-content;
+      max-width: 90%;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .recommended-badge {
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      background: linear-gradient(45deg, #ff6b6b, #feca57);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transform: rotate(15deg);
+      z-index: 1;
+    }
+
+    .plan-card.featured {
+      transform: scale(1.05);
+      border: 2px solid var(--primary-color);
+      box-shadow: 0 8px 24px rgba(99, 102, 241, 0.15);
+    }
+
+    .plan-card.featured:hover {
+      transform: scale(1.05) translateY(-10px);
+    }
+
+    .vendibooks-promo {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .plans-container {
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+
+      .plan-card {
+        padding: 30px 20px;
+      }
+
+      .plan-title {
+        font-size: 1.5rem;
+      }
+
+      .plan-price {
+        font-size: 2rem;
+      }
+
+      .payment-buttons {
+        flex-direction: column;
+      }
+
+      .payment-btn {
+        width: 100%;
+      }
+
+      .payment-notice {
+        position: relative;
+        margin-top: 40px;
+        transform: none;
+        left: auto;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <a href="index.html" class="logo">EduFuture Academy</a>
+    </nav>
+  </header>
+
+  <section class="plans-section">
+    <div class="plans-container">
+      <div class="plan-card">
+        <h2 class="plan-title">Plan Alumno Avanzado</h2>
+        <div class="currency-toggle">
+          <button class="active" data-currency="UYU">UYU</button>
+          <button data-currency="USD">USD</button>
+        </div>
+        <div class="plan-price">
+          <span class="amount" data-uyu="1500" data-usd="40">$1500 UYU</span>
+        </div>
+        <ul class="plan-features">
+          <li><i class="fas fa-check"></i> Acceso completo a clases grabadas</li>
+          <li><i class="fas fa-check"></i> Material didáctico exclusivo</li>
+          <li><i class="fas fa-check"></i> Certificado de finalización</li>
+        </ul>
+        <div class="payment-buttons">
+          <button class="payment-btn mercadopago-btn">
+            <i class="fas fa-shopping-cart"></i>
+            Pagar con Mercado Pago
+          </button>
+          <button class="payment-btn paypal-btn">
+            <i class="fab fa-paypal"></i>
+            Pagar con PayPal
+          </button>
+        </div>
+      </div>
+
+      <div class="plan-card featured">
+        <div class="recommended-badge">
+          <i class="fas fa-star"></i> Más recomendado
+        </div>
+        <h2 class="plan-title">Plan Alumno Experto</h2>
+        <div class="currency-toggle">
+          <button class="active" data-currency="UYU">UYU</button>
+          <button data-currency="USD">USD</button>
+        </div>
+        <div class="plan-price">
+          <span class="amount" data-uyu="2500" data-usd="65">$2500 UYU</span>
+        </div>
+        <ul class="plan-features">
+          <li><i class="fas fa-check"></i> Acceso completo a clases grabadas</li>
+          <li><i class="fas fa-check"></i> Material didáctico exclusivo</li>
+          <li><i class="fas fa-check"></i> 2 clases presenciales semanales</li>
+          <li><i class="fas fa-check"></i> Certificado de finalización</li>
+        </ul>
+        <div class="payment-buttons">
+          <button class="payment-btn mercadopago-btn">
+            <i class="fas fa-shopping-cart"></i>
+            Pagar con Mercado Pago
+          </button>
+          <button class="payment-btn paypal-btn">
+            <i class="fab fa-paypal"></i>
+            Pagar con PayPal
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="payment-notice">
+      <i class="fas fa-info-circle"></i>
+      No es necesario tener una cuenta de Mercado Pago o PayPal. Se aceptan todas las tarjetas de débito y crédito.
+    </div>
+
+    <script>
+      document.querySelectorAll('.currency-toggle').forEach(toggle => {
+        toggle.querySelectorAll('button').forEach(btn => {
+          btn.addEventListener('click', () => {
+            toggle.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const currency = btn.dataset.currency;
+            const priceElement = toggle.closest('.plan-card').querySelector('.amount');
+            const uyu = priceElement.dataset.uyu;
+            const usd = priceElement.dataset.usd;
+
+            priceElement.textContent = currency === 'UYU' ? 
+              `$${uyu} UYU` : 
+              `$${usd} USD`;
+          });
+        });
+      });
+    </script>
+  </section>
+</body>
+</html>
